@@ -1,0 +1,124 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+nav {
+	position: fixed;
+	background-color: skyblue;
+	height: 70px;
+	width: 100%;
+	z-index: 1;
+}
+.logo {
+	font-size: 25px;
+	position: relative;
+	left: 5%;
+	color: white;
+	font-weight: bold;
+	line-height: 70px;
+}
+ul {
+	position: relative;
+	float: right;
+	margin-right: 20px;
+}
+ul li {
+	display: inline-block;
+	line-height: 70px;
+	margin: 0 5px;
+}
+ul li a {
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+}
+.banner_img {
+	width: 100%;
+	height: 300px;
+}
+.banner {
+	padding-top: 80px;
+}
+.banner_text{
+	position: absolute;
+	top: 25%;
+	left: 40%;
+	color: white;
+	background-color: midnightblue;
+	padding-right: 20px;
+	padding-left: 20px;
+	font-size: 40px;
+}
+.description_area{
+	padding-top: 70px;
+	border-bottom: 5px solid #aab37d;
+	padding-bottom: 10px;
+}
+.description_img{
+	width: 100%;
+	height: 250px;
+}
+/* teacher style start */
+.teacher_area{
+	border-bottom: 5px solid #aab37d;
+	background: #c7dee7;
+}
+.techer_box{
+	border: 5px solid white;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	border-radius: 10px;
+}
+.techer_box:last-child{
+	margin-right: 0;
+}
+.teacher_img{
+	width: 100%;
+	height: 200px;
+}
+/* course style end */
+/* course style start */
+.course_area{
+	border-bottom: 5px solid #aab37d;
+}
+.course_box{
+	border: 4px solid #aaa7a7;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	border-radius: 10px;
+}
+.course_box:last-child{
+	margin-right: 0;
+}
+
+.course_img{
+	width: 100%;
+	height: 200px;
+}
+/* course style end */
+/* course style end */
+/* admission style start */
+.admissionForm_area{
+	background: #c7dee7;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+.apply{
+	font-size: 20px;
+	position: relative;
+	left: 35%;
+	padding-left: 90px;
+	padding-right: 90px;
+}
+/* admission style end */
+/* footer style start */
+.footer_area{
+	background: black;
+	text-align: center;
+	color: white;
+	padding: 20px;
+}
+/* footer style end */
