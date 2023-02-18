@@ -6,6 +6,7 @@ $error=[];
 if(isset($_POST['submit'])){
   $email=trim(htmlentities($_POST['email']));
   $password=trim(htmlentities($_POST['password']));
+  $type= trim(htmlentities($_POST['user_type']));
   $md5=md5($password);
 
   if(empty($email)){
@@ -23,13 +24,19 @@ if(isset($_POST['submit'])){
   if(mysqli_num_rows($result)>0){
     
     if($type['user_type']=='student'){
-      header("location: ../student/index.php");
+      header("location: ../student_info/index.php");
+      $user = mysqli_fetch_all($result);
+      unset($user['password']);
+      $_SESSION['login-user'] = $user;
+      $_SESSION['user_type'] = $type;
     }elseif($type['user_type'] == 'admin'){
       header("location: ../admin/index.php");
+      $user = mysqli_fetch_all($result);
+      unset($user['password']);
+      $_SESSION['login-user'] = $user;
+      $_SESSION['user_type'] = $type;
     }
-    $user = mysqli_fetch_all($result);
-    unset($user['password']);
-    $_SESSION['login-user'] = $user; 
+     
     
     $_SESSION['success'] = 'Login Successfull!';
   }else{

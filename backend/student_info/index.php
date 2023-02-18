@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION['login-user'])) {
   header("location: ../auth/login.php");
-} 
+}
 function siteUrl()
 {
   $bassfol = explode('/', $_SERVER['REQUEST_URI']);
@@ -28,7 +28,7 @@ function siteUrl()
 <body class="sb-nav-fixed">
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="<?= siteUrl() ?>/blog_site/backend/admin/index.php">Start Bootstrap</a>
+    <a class="navbar-brand ps-3" href="<?= siteUrl() ?>/backend/student/index.php">Start Bootstrap</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -59,7 +59,7 @@ function siteUrl()
         <div class="sb-sidenav-menu">
           <div class="nav">
             <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link" href="<?= siteUrl() ?>/backend/admin/index.php">
+            <a class="nav-link" href="<?= siteUrl() ?>/backend/student/index.php">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
@@ -67,15 +67,14 @@ function siteUrl()
             <!-- banner part start -->
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsbanner" aria-expanded="false" aria-controls="collapseLayoutsbanner">
               <div class="sb-nav-link-icon"><i class="fa-regular fa-image"></i></div>
-              Banners
+              Student Info
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseLayoutsbanner" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
                 <a class="nav-link" href="<?= siteUrl() ?>/backend/admin/banner/allBanners.php">All
-                  Banners</a>
-                <a class="nav-link" href="<?= siteUrl() ?>/backend/admin/banner/addBanner.php">Add
-                  Banner</a>
+                  My Courses</a>
+                <a class="nav-link" href="<?= siteUrl() ?>/backend/admin/banner/addBanner.php">My Result</a>
               </nav>
             </div>
             <!-- banner part end -->
@@ -143,3 +142,34 @@ function siteUrl()
       <main>
 
       </main>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/jquery-3.6.3.min.js" crossorigin="anonymous">
+  </script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+  </script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/scripts.js"></script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/chart-area-demo.js" crossorigin="anonymous">
+  </script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/chart-bar-demo.js"></script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/chart-pie-demo.js"></script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/datatables-demo.js" crossorigin="anonymous"></script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/Chart.min.js"></script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/simple-datatables@latest.js"></script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/datatables-simple-demo.js"></script>
+  <script src="<?= siteUrl() ?>/backend/admin/assets/js/all.js"></script>
+</body>
+
+</html>
