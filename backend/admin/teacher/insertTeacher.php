@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
   $phone = trim(htmlentities($_POST['phone']));
   $photo = $_FILES['photo'];
   $teacher_id = trim(htmlentities($_POST['teacher_id']));
+  $teacher_info = trim(htmlentities($_POST['teacher_info']));
 
   $photoType=['jpeg','jpg','png'];
   $photoEX=explode('.',$photo['name']);
@@ -25,6 +26,9 @@ if (isset($_POST['submit'])) {
   if (empty($name)) {
     $error['nameErr'] = '*Required';
   }
+  if (empty($name)) {
+    $error['teacher_infoErr'] = '*Required';
+  }
   if (empty($photo['name'])) {
     $error['photoErr'] = 'Select Your Photo';
   }elseif($photoType===false){
@@ -38,7 +42,7 @@ if (isset($_POST['submit'])) {
     $uploadPhoto=move_uploaded_file($photo['tmp_name'],"../../uploads/teacher/". $photoName);
 
     if($uploadPhoto){
-      $query="INSERT into teachers (name,email,phone,photo,teacher_id) VALUES ('$name','$email','$phone','$photoName','$teacher_id')";
+      $query="INSERT into teachers (name,email,phone,photo,teacher_id,teacher_info) VALUES ('$name','$email','$phone','$photoName','$teacher_id','$teacher_info')";
       $result=mysqli_query($conn,$query);
       if($result){
         $_SESSION['success']='Teachers info added Successfull!';

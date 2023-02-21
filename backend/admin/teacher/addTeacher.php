@@ -77,6 +77,15 @@ require_once "../inc/header.php";
               }
               ?>
             </div>
+            <div class="form-group">
+              <b>Teacher Info:</b>
+              <textarea name="teacher_info" class=" form-control" placeholder="Enter Teacher Info" rows="7"></textarea>
+              <?php
+              if (isset($_SESSION['error']['teacher_infoErr'])) {
+                printf("<p class='alert alert-danger'>%s</p>", $_SESSION['error']['teacher_infoErr']);
+              }
+              ?>
+            </div>
             <button type="submit" name="submit" class="btn btn-primary mt-3">Add Teacher</button>
           </form>
         </div>

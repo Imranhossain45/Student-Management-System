@@ -20,21 +20,23 @@ if(isset($_POST['submit'])){
 
   $query="SELECT fname,lname,email,password,user_type FROM users WHERE email='$email' AND password='$md5'";
   $result=mysqli_query($conn,$query);
-  $type=mysqli_fetch_array($result);
+  $data=mysqli_fetch_array($result);
   if(mysqli_num_rows($result)>0){
     
-    if($type['user_type']=='student'){
-      header("location: ../student_info/index.php");
+    if($data['user_type'] == 'student'){
+      
       $user = mysqli_fetch_all($result);
       unset($user['password']);
       $_SESSION['login-user'] = $user;
-      $_SESSION['user_type'] = $type;
-    }elseif($type['user_type'] == 'admin'){
+      $_SESSION['user_type'] = $data['user_type'];
+      $_SESSION['user-name']= $data['fname'];
+      header("location: ../student_info/index.php");
+    }elseif($data['user_type'] == 'admin'){
       header("location: ../admin/index.php");
       $user = mysqli_fetch_all($result);
       unset($user['password']);
       $_SESSION['login-user'] = $user;
-      $_SESSION['user_type'] = $type;
+      $_SESSION['user_type'] = $data['user_type'];
     }
      
     
@@ -44,4 +46,3 @@ if(isset($_POST['submit'])){
     header("location: login.php");
   }
 }
-?>

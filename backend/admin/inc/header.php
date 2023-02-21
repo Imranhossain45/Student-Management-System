@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION['login-user'])) {
   header("location: ../auth/login.php");
-} 
+}
 function siteUrl()
 {
   $bassfol = explode('/', $_SERVER['REQUEST_URI']);
@@ -108,8 +108,23 @@ function siteUrl()
                   Student</a>
               </nav>
             </div>
-            <!-- blog part end -->
-            <!-- team part start -->
+            <!-- Students part end -->
+            <!-- Course part start -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutscourse" aria-expanded="false" aria-controls="collapseLayoutscourse">
+              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+              Courses
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLayoutscourse" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="<?= siteUrl() ?>/backend/admin/course/allCourses.php">All
+                  Courses</a>
+                <a class="nav-link" href="<?= siteUrl() ?>/backend/admin/course/addCourse.php">Add
+                  Course</a>
+              </nav>
+            </div>
+            <!-- Course part end -->
+            <!-- Admissions part start -->
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsteam" aria-expanded="false" aria-controls="collapseLayoutsteam">
               <div class="sb-nav-link-icon"><i class="fa-sharp fa-solid fa-person"></i></div>
               Admission
@@ -121,7 +136,7 @@ function siteUrl()
                   Admissions</a>
               </nav>
             </div>
-            <!-- team part end -->
+            <!-- Admissions part end -->
 
             <div class="sb-sidenav-menu-heading">Addons</div>
             <a class="nav-link" href="charts.html">
@@ -139,7 +154,7 @@ function siteUrl()
         </div>
       </nav>
     </div>
-    <div id="layoutSidenav_content" style="margin-left: 20px;">
+    <div id="layoutSidenav_content" style="margin-left: 20px; margin-top: 10px;">
       <main>
 
       </main>

@@ -21,11 +21,7 @@ session_start();
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-5">
-              <?php
-              if (isset($_SESSION['success'])) {
-                printf('<div class="alert alert-success"> %s </div>', $_SESSION['success']);
-              }
-              ?>
+              
 
               <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header bg-dark bg-opacity-25">

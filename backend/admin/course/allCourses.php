@@ -2,10 +2,10 @@
 session_start();
 require_once "../../../db.php";
 require_once "../inc/header.php";
-$query = "SELECT * FROM students";
+$query = "SELECT * FROM courses ";
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result)) {
-  $students = mysqli_fetch_all($result, true);
+  $courses = mysqli_fetch_all($result, true);
 }
 
 
@@ -18,10 +18,10 @@ if (mysqli_num_rows($result)) {
           <li class="breadcrumb-item"><a href="../index.php">
               <h5>Home</h5>
             </a></li>
-          <li class="breadcrumb-item active" aria-current="page">All Students</li>
+          <li class="breadcrumb-item active" aria-current="page">All course</li>
         </ol>
       </nav>
-      <h1 class="m-0">All Students</h1>
+      <h1 class="m-0">All course</h1>
     </div>
   </div>
 </div>
@@ -37,11 +37,9 @@ if (mysqli_num_rows($result)) {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Student ID</th>
             <th>Department</th>
+            <th>Semester</th>
+            <th>Subject</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -49,34 +47,53 @@ if (mysqli_num_rows($result)) {
 
         <tbody>
           <?php
-          foreach ($students as $student) {
+          foreach ($courses as $key => $course) {
           ?>
             <tr>
-              <td><?= $student['id'] ?></td>
-              <td><?= $student['name'] ?></td>
-              <td><?= $student['email'] ?></td>
-              <td><?= $student['phone'] ?></td>
-              <td><?= $student['student_id'] ?></td>
-              <!-- <td><?= $student['department'] ?></td> -->
+              <td><?= $course['id'] ?></td>
               <td>
                 <?php
-                $depID= $student['department'];
+                $depID = $course['department'];
                 $sql = "SELECT department FROM `departments` WHERE id='$depID'";
                 $result = $conn->query($sql);
-                if($result->num_rows > 0){
+                if ($result->num_rows > 0) {
                   foreach ($result as $x) {
                     echo $x['department'];
                   }
-                }else{
-                  echo $student['department'];
-                }                
+                } else {
+                  echo $course['department'];
+                }
                 ?>
+
               </td>
-              <td><?= $student['status'] ?></td>
+              <td><?= $course['semester'] ?></td>
+              <td>
+
+                <div>
+                  <?= $course['subject1'] ?>
+                </div>
+                <div>
+                  <?= $course['subject2'] ?>
+                </div>
+                <div>
+                  <?= $course['subject3'] ?>
+                </div>
+                <div>
+                  <?= $course['subject4'] ?>
+                </div>
+                <div>
+                  <?= $course['subject5'] ?>
+                </div>
+                <div>
+                  <?= $course['subject6'] ?>
+                </div>
+
+              </td>
+              <td><?= $course['status'] ?></td>
               <td>
                 <a href="#" class="btn btn-sm btn-primary">View</a>
-                <a href="editstudent.php?id=<?= $student['id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                <a href="deletestudent.php?id=<?= $student['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                <a href="editCourse.php?id=<?= $course['id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                <a href="deleteCourse.php?id=<?= $course['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
               </td>
             </tr>
           <?php
@@ -84,6 +101,7 @@ if (mysqli_num_rows($result)) {
           ?>
         </tbody>
       </table>
+
     </div>
   </div>
 </div>

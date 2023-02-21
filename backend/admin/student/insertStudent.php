@@ -51,5 +51,6 @@ if (isset($_POST['submit'])) {
     }
   } else {
     $_SESSION['error'] = $error;
+    header("location:addStudent.php");
   }
 }

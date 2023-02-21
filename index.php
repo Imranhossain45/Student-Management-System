@@ -1,5 +1,14 @@
 <?php
 session_start();
+require_once "db.php";
+$teacherQuery = "SELECT * FROM teachers limit 3";
+$teacherResult = mysqli_query($conn, $teacherQuery);
+if (mysqli_num_rows($teacherResult) > 0) {
+  $teachers = mysqli_fetch_all($teacherResult, true);
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,13 +72,20 @@ session_start();
     </center>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
-          <div class="row techer_box">
-            <img class="teacher_img" src="img/teacher1.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quia accusamus non nam ea delectus distinctio, nemo, ab magnam, veritatis debitis odio aperiam similique consequatur explicabo? Rerum nulla ratione qui?</p>
+        <?php
+        foreach ($teachers as $teacher) {
+        ?>
+          <div class="col-lg-4">
+            <div class="row techer_box">
+              <img class="teacher_img" src="backend/uploads/teacher/<?= $teacher['photo'] ?>" alt="">
+              <p><?= $teacher['teacher_info'] ?></p>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-4">
+        <?php
+        }
+        ?>
+
+        <!-- <div class="col-lg-4">
           <div class="row techer_box">
             <img class="teacher_img" src="img/teacher2.jpg" alt="">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quia accusamus non nam ea delectus distinctio, nemo, ab magnam, veritatis debitis odio aperiam similique consequatur explicabo? Rerum nulla ratione qui?</p>
@@ -80,7 +96,7 @@ session_start();
             <img class="teacher_img" src="img/teacher3.jpg" alt="">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quia accusamus non nam ea delectus distinctio, nemo, ab magnam, veritatis debitis odio aperiam similique consequatur explicabo? Rerum nulla ratione qui?</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

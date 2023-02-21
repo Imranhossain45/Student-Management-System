@@ -1,6 +1,9 @@
 <?php
 session_start();
+require_once "../../../db.php";
 require_once "../inc/header.php";
+$sql = "SELECT * FROM `departments` WHERE status=1";
+$result = $conn->query($sql);
 ?>
 <div class="content">
   <div class="container">
@@ -50,7 +53,20 @@ require_once "../inc/header.php";
               </div>
               <div class=" form-group">
                 <b>Department:</b>
-                <input type="text" name="department" class="form-control mt-2" placeholder="Enter Department Name">
+                <select name="department" class="form-control mt-2">
+                  <option disabled selected>Select Department</option>
+                  <?php
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                  ?>
+                      <option value="<?= $row['id'] ?>"><?= $row['department'] ?></option>
+                  <?php
+                    }
+                  }
+                  $conn->close();
+                  ?>
+                </select>
                 <?php
                 if (isset($_SESSION['error']['departmentErr'])) {
                   printf("<p class='alert alert-danger'>%s</p>", $_SESSION['error']['departmentErr']);

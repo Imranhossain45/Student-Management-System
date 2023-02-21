@@ -48,6 +48,7 @@ if (mysqli_num_rows($result) > 0) {
               <th>Email</th>
               <th>Phone</th>
               <th>Teacher ID</th>
+              <th>Teacher Info</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -59,15 +60,16 @@ if (mysqli_num_rows($result) > 0) {
               <tr>
                 <td><?= $teacher['id'] ?></td>
                 <td>
-                  <img src="../../uploads/teacher/<?= $teacher['photo'] ?>" alt="<?= $teacher['name'] ?>" width="60">
+                  <img src="../../uploads/teacher/<?= $teacher['photo'] ?>" alt="<?= $teacher['name'] ?>" width="60" height="60">
                 </td>
                 <td><?= $teacher['name'] ?></td>
                 <td><?= $teacher['email'] ?></td>
                 <td><?= $teacher['phone'] ?></td>
                 <td><?= $teacher['teacher_id'] ?></td>
+                <td><?= substr($teacher['teacher_info'], 0, 20) . '...' ?></td>
                 <td><?= $teacher['status'] ?></td>
                 <td>
-                  <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                  <a href="editTeacher.php?id=<?= $teacher['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                   <a href="#" class="btn btn-sm btn-danger">Delete</a>
                 </td>
               </tr>
@@ -80,7 +82,7 @@ if (mysqli_num_rows($result) > 0) {
     </div>
   </div>
 </div>
-<?php 
+<?php
 require_once "../inc/footer.php";
 unset($_SESSION['success']);
 ?>
